@@ -1,5 +1,8 @@
 # Lab: Build a Database MCP Server with FastMCP and SQLite
 
+## ID: 2A202600050
+## Name: Dương Trịnh Hoài An
+---
 ## Goal
 
 Build a Model Context Protocol (MCP) server using FastMCP that exposes a small database through:
