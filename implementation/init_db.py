@@ -5,7 +5,6 @@ Run directly:  python init_db.py
 
 from __future__ import annotations
 
-import os
 import sqlite3
 from pathlib import Path
 
@@ -66,8 +65,9 @@ INSERT INTO enrollments (student_id, course_id, grade) VALUES
 
 
 def create_database(db_path: Path = DB_PATH) -> Path:
-    if db_path.exists():
-        os.remove(db_path)
+    # SCHEMA_SQL drops existing tables, so we do not need to remove the file.
+    # Reusing the file avoids PermissionError when another process (e.g. a
+    # running MCP server) still holds an open connection to it.
     conn = sqlite3.connect(db_path)
     try:
         conn.executescript(SCHEMA_SQL)
